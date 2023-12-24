@@ -3,38 +3,33 @@ import { HomePage } from "../core/page-objects/home-page";
 import { createDriver, quitDriver } from "../core/config/driver-setup";
 import { readFileSync } from "fs";
 import * as path from "path";
-import { RegistrationPage } from "../core/page-objects/registration-page";
+import { LoginPage } from "../core/page-objects/login-page";
 
 const dataFilePath = path.resolve(__dirname, "../core/data/data.json");
 const testData = JSON.parse(readFileSync(dataFilePath, "utf8"));
 
 let driver: WebDriver;
 let homePage: HomePage;
-let registrationPage: RegistrationPage;
+let loginPage: LoginPage;
 
 beforeAll(async () => {
 	driver = await createDriver(testData.url.homepage);
 	homePage = new HomePage(driver);
-	registrationPage = new RegistrationPage(driver);
+	loginPage = new LoginPage(driver);
 }, 10000);
 
-test("Should register user", async () => {
+test("Should login the user", async () => {
 	await homePage.closePopUp();
 	await homePage.selectEurope();
 	await homePage.selectArea();
-	await registrationPage.clickJoin();
-	await registrationPage.inputPhone();
-	await registrationPage.inputPassword();
-	await registrationPage.clickRegister();
-	await registrationPage.inputNumbers();
-	await registrationPage.inputName();
-	await registrationPage.inputSurname();
-	await registrationPage.clickNext();
-	await registrationPage.clickCheckbox();
-	await registrationPage.clickFinish();
-	await registrationPage.checkWelcomeHeader();
+	await homePage.clickSignIn();
+	await loginPage.waitForMenu();
+	await loginPage.enterNumber();
+	await loginPage.enterPassword();
+	await loginPage.clickSignIn();
+	await loginPage.checkInformation();
 }, 50000);
 
 afterAll(async () => {
 	await quitDriver(driver);
-}, 10000);
+}, 50000);
