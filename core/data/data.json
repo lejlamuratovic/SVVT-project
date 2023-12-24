@@ -4,10 +4,11 @@
         "test": "https://ba.oriflame.com/join-us/self-vip-registration?registrationId=c768f499-80bd-9080-e43d-246958f4d0e7"
     },
     "data": {
-        "phoneNumber": "63411412",
+        "phoneNumber": "lejlamuratovic6@gmail.com",
         "password": "lejlaemir123",
         "verificationCode": 911232,
         "firstName": "Lejla",
-        "lastName": "Emir"
+        "lastName": "Emir",
+        "fullName": "Lejla Muratović"
     }
 }
