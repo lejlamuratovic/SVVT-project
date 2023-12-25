@@ -10,5 +10,9 @@
         "firstName": "Lejla",
         "lastName": "Emir",
         "fullName": "Lejla Muratović"
+    },
+    "search": {
+        "searchText": "Soap",
+        "searchResult": "Scents & Moments Sweet Dreams Relaxing sapun"
     }
 }

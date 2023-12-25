@@ -1,4 +1,4 @@
-import { By, WebDriver, WebElement, until } from "selenium-webdriver";
+import { By, WebDriver, WebElement, until, Key } from "selenium-webdriver";
 export default class BasePage {
 	protected driver: WebDriver;
 
@@ -55,15 +55,18 @@ export default class BasePage {
 
 	// to ensure there is no overlay on top of the element
 	async findElementAndEnsureVisible(selector: By) {
-        const element = await this.waitForElement(selector, 10000);
-        await this.driver.executeScript("arguments[0].scrollIntoView(true);", element);
-        await this.driver.sleep(1000); // sleep to ensure any overlays have time to disappear
-        return element;
-    }
+		const element = await this.waitForElement(selector, 10000);
+		await this.driver.executeScript(
+			"arguments[0].scrollIntoView(true);",
+			element
+		);
+		await this.driver.sleep(1000); // sleep to ensure any overlays have time to disappear
+		return element;
+	}
 
-    async findElementAndClickEnsuringVisible(selector: By) {
-        const element = await this.findElementAndEnsureVisible(selector);
-        await this.hoverElement(element);
-        await element.click();
-    }
+	async findElementAndClickEnsuringVisible(selector: By) {
+		const element = await this.findElementAndEnsureVisible(selector);
+		await this.hoverElement(element);
+		await element.click();
+	}
 }
