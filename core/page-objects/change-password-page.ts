@@ -24,7 +24,7 @@ export class ChangePasswordPage extends BasePage {
 
 	private newPasswordInput = By.name("newPassword");
 
-	private confirmButton = By.xpath('//button[@data-testid="Acquisition-react-profile-change-password-save-button"]'
+	private confirmButton = By.xpath('//div[@class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 profile-spa-15j76c0"]//button[@data-testid="Acquisition-react-profile-change-password-save-button"]'
 	);
 
 	async clickProfileSettings() {
@@ -49,7 +49,11 @@ export class ChangePasswordPage extends BasePage {
 		);
 	}
 
+	async waitForConfirmButton() {
+		await this.waitForElement(this.confirmButton, 10000);
+	}
+
 	async clickConfirm() {
-		await this.findElementAndClickEnsuringVisible(this.confirmButton);
+		await this.findElementAndClick(this.confirmButton);
 	}
 }

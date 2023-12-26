@@ -26,6 +26,7 @@ test("Should change the user's password", async () => {
 	await homePage.selectEurope();
 	await homePage.selectArea();
 	await homePage.clickSignIn();
+	await homePage.closeCookies();
 	await loginPage.waitForMenu();
 	await loginPage.enterNumber();
 	await loginPage.enterPassword();
@@ -35,8 +36,8 @@ test("Should change the user's password", async () => {
 	await changePasswordPage.clickSecurity();
 	await changePasswordPage.enterOldPassword();
 	await changePasswordPage.enterNewPassword();
-	await homePage.closeCookies();
-	// await changePasswordPage.clickConfirm();
+	// await changePasswordPage.waitForConfirmButton();
+	await changePasswordPage.clickConfirm();
 }, 60000);
 
 afterAll(async () => {
