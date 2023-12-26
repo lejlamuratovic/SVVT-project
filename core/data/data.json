@@ -16,6 +16,7 @@
         "searchResult": "Scents & Moments Sweet Dreams Relaxing sapun"
     },
     "changePassword": {
-        "newPassword": "lejlaemir1234"
+        "newPassword": "lejlaemir1234",
+        "oldPassword": "lejlaemir123"
     }
 }
