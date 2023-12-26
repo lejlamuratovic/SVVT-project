@@ -16,6 +16,11 @@ export default class BasePage {
 		expect(elementText).toMatch(matchingItem);
 	}
 
+	async retrieveText(selector: By) {
+		const element = await this.findElement(selector);
+		return await element.getText();
+	}
+
 	async findElement(selector: By) {
 		return await this.driver.findElement(selector);
 	}
