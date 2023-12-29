@@ -26,12 +26,18 @@ test("Should change the user's password", async () => {
 	await homePage.selectEurope();
 	await homePage.selectArea();
 	await homePage.clickSignIn();
+	await homePage.closeCookies();
 	await loginPage.waitForMenu();
 	await loginPage.enterNumber();
 	await loginPage.enterPassword();
 	await loginPage.clickSignIn();
 	await loginPage.checkInformation();
-	// await changePasswordPage.clickProfileSettings();
+	await changePasswordPage.clickProfileSettings();
+	await changePasswordPage.clickSecurity();
+	await changePasswordPage.enterOldPassword();
+	await changePasswordPage.enterNewPassword();
+	// await changePasswordPage.waitForConfirmButton();
+	await changePasswordPage.clickConfirm();
 }, 60000);
 
 afterAll(async () => {

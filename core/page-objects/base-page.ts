@@ -69,4 +69,10 @@ export default class BasePage {
 		await this.hoverElement(element);
 		await element.click();
 	}
+
+	async retrieveText(selector: By) {
+		const element = await this.findElement(selector);
+		return await element.getText();
+	}
+
 }
