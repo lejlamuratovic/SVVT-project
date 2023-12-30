@@ -26,6 +26,8 @@ test("Should subscribe", async () => {
 	await subscribePage.scrollToBottom();
 	await subscribePage.loadSubscribeBanner();
 	await subscribePage.clickSubscribeBanner();
+	await subscribePage.enterEmail();
+	await subscribePage.clickPrijaviSeButton();
 }, 100000);
 
 afterAll(async () => {
