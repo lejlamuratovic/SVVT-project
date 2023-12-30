@@ -21,5 +21,8 @@
     },
     "cart": {
         "emptyCart": "Prazna košarica"
+    },
+    "hyperlinks": {
+        "instagram": "https://www.instagram.com/oriflamebosnaihercegovina/"
     }
 }
