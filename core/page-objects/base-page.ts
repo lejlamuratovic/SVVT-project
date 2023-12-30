@@ -74,4 +74,10 @@ export default class BasePage {
 		await this.hoverElement(element);
 		await element.click();
 	}
+
+	async scrollToBottom() {
+		await this.driver.executeScript(
+			"window.scrollTo(0, document.body.scrollHeight)"
+		);
+	}
 }
