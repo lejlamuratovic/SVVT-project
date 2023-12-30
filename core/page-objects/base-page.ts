@@ -58,7 +58,7 @@ export default class BasePage {
 		await (await this.findElement(inputField)).sendKeys(text);
 	}
 
-	// to ensure there is no overlay on top of the element
+	// to be used when the element is not visible on the page
 	async findElementAndEnsureVisible(selector: By) {
 		const element = await this.waitForElement(selector, 10000);
 		await this.driver.executeScript(
@@ -75,9 +75,35 @@ export default class BasePage {
 		await element.click();
 	}
 
+	// check current url matches expected url
+	async checkCurrentUrl(expectedUrl: string) {
+		const currentUrl = await this.driver.getCurrentUrl();
+		expect(currentUrl).toMatch(expectedUrl);
+	}
+
+	async scrollElementIntoView(selector: By) {
+		// wait for the element to be present
+		const element = await this.driver.wait(
+			until.elementLocated(selector, 10000)
+		);
+
+		// scroll the element into view
+		await this.driver.executeScript(
+			"arguments[0].scrollIntoView(false);",
+			element
+		);
+	}
+
+	// scroll to the bottom of the page
 	async scrollToBottom() {
 		await this.driver.executeScript(
 			"window.scrollTo(0, document.body.scrollHeight)"
 		);
+	}
+
+	// scroll element into view and click
+	async scrollElementIntoViewAndClick(selector: By) {
+		await this.scrollElementIntoView(selector);
+		await this.findElementAndClick(selector);
 	}
 }
