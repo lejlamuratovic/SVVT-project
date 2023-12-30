@@ -83,15 +83,22 @@ export default class BasePage {
 
 	async scrollElementIntoView(selector: By) {
 		// wait for the element to be present
-		const element = await this.driver.wait(until.elementLocated(selector, 10000));
-	  
+		const element = await this.driver.wait(
+			until.elementLocated(selector, 10000)
+		);
+
 		// scroll the element into view
-		await this.driver.executeScript("arguments[0].scrollIntoView(false);", element);
+		await this.driver.executeScript(
+			"arguments[0].scrollIntoView(false);",
+			element
+		);
 	}
 
 	// scroll to the bottom of the page
 	async scrollToBottom() {
-		await this.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		await this.driver.executeScript(
+			"window.scrollTo(0, document.body.scrollHeight)"
+		);
 	}
 
 	// scroll element into view and click
