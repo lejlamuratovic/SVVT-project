@@ -54,6 +54,12 @@ export default class BasePage {
 			.perform();
 	}
 
+	// stay hovering over an element for a specified time
+	async hoverOverElement(selector: By) {
+		const element = await this.findElement(selector);
+		await this.hoverElement(element);
+	}
+
 	async fillInputField(inputField: By, text: string) {
 		await (await this.findElement(inputField)).sendKeys(text);
 	}
@@ -97,6 +103,9 @@ export default class BasePage {
 	// scroll element into view and click
 	async scrollElementIntoViewAndClick(selector: By) {
 		await this.scrollElementIntoView(selector);
+		// timeout needed to allow any overlays to disappear
+		await this.driver.sleep(5000);
+		// click the element
 		await this.findElementAndClick(selector);
 	}
 }
