@@ -30,6 +30,8 @@ test("Should filter products on search", async () => {
     await productsPage.clickMakeUp();
     await productsPage.findFaceOption();
     await productsPage.clickFace();
+    await productsPage.findFoundationOption();
+    await productsPage.clickFoundation();
     await productsPage.clickFilterButton();
     //await productsPage.clickFoundation();
 }, 50000);

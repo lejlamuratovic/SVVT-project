@@ -15,7 +15,8 @@ export class ProductPage extends BasePage {
     private hamburgerMenu = By.xpath('//button[@data-testid="Presentation-top-area-burger-menu"]');
     private menu = By.className("appshell-fp-sobcg6");
     private makeUpOption = By.xpath('//a[@href="/makeup"]');
-    private faceOption = By.xpath('//a[@href="/makeup/face"]');
+    private faceOption = By.xpath('//a[@href="/makeup/face"]//div[@class="heading js-cut-short"]');
+    private foundationOption = By.xpath('//li[@data-testid="Presentation-navlink-_makeup_face_foundation"]');
     private filterButton = By.className('filter-button-content');
 
     async clickHamburgerMenu() {
@@ -31,7 +32,7 @@ export class ProductPage extends BasePage {
     }
 
     async clickMakeUp() {
-        await this.findElementAndClickEnsuringVisible(this.makeUpOption);
+        await this.findElementAndClick(this.makeUpOption);
     }
 
     async findFaceOption() {
@@ -39,7 +40,15 @@ export class ProductPage extends BasePage {
     }
 
     async clickFace() {
-        await this.findElementAndClickEnsuringVisible(this.faceOption);
+        await this.findElementAndClick(this.faceOption);
+    }
+
+    async findFoundationOption() {
+        await this.waitForElement(this.foundationOption, 5000);
+    }
+
+    async clickFoundation() {
+        await this.findElementAndClick(this.foundationOption);
     }
 
     async clickFilterButton() {
