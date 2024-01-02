@@ -33,7 +33,8 @@ test("Should filter products on search", async () => {
     await productsPage.findFoundationOption();
     await productsPage.clickFoundation();
     await productsPage.clickFilterButton();
-    //await productsPage.clickFoundation();
+    await productsPage.clickPriceFilter();
+    await productsPage.arePricesSortedLowToHigh();
 }, 50000);
 
 afterAll(async () => {
