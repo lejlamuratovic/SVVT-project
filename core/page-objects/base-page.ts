@@ -75,7 +75,7 @@ export default class BasePage {
 		await element.click();
 	}
 
-	// check current url matches expected url
+	// check current url matches expected url of the page
 	async checkCurrentUrl(expectedUrl: string) {
 		const currentUrl = await this.driver.getCurrentUrl();
 		expect(currentUrl).toMatch(expectedUrl);
