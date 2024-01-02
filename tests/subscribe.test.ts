@@ -23,7 +23,6 @@ test("Should subscribe", async () => {
 	await homePage.selectEurope();
 	await homePage.selectArea();
 	await homePage.closeCookies();	
-	await driver.sleep(5000);
 	await subscribePage.scrollToBottom();
 	await subscribePage.loadSubscribeBanner();
 	await subscribePage.clickSubscribeBanner();
