@@ -54,6 +54,12 @@ export default class BasePage {
 			.perform();
 	}
 
+	// stay hovering over an element for a specified time
+	async hoverOverElement(selector: By) {
+		const element = await this.findElement(selector);
+		await this.hoverElement(element);
+	}
+
 	async fillInputField(inputField: By, text: string) {
 		await (await this.findElement(inputField)).sendKeys(text);
 	}
@@ -75,7 +81,7 @@ export default class BasePage {
 		await element.click();
 	}
 
-	// check current url matches expected url of the page
+	// check current url matches expected url
 	async checkCurrentUrl(expectedUrl: string) {
 		const currentUrl = await this.driver.getCurrentUrl();
 		expect(currentUrl).toMatch(expectedUrl);
@@ -83,27 +89,23 @@ export default class BasePage {
 
 	async scrollElementIntoView(selector: By) {
 		// wait for the element to be present
-		const element = await this.driver.wait(
-			until.elementLocated(selector, 10000)
-		);
-
+		const element = await this.driver.wait(until.elementLocated(selector, 10000));
+	  
 		// scroll the element into view
-		await this.driver.executeScript(
-			"arguments[0].scrollIntoView(false);",
-			element
-		);
+		await this.driver.executeScript("arguments[0].scrollIntoView(false);", element);
 	}
 
 	// scroll to the bottom of the page
 	async scrollToBottom() {
-		await this.driver.executeScript(
-			"window.scrollTo(0, document.body.scrollHeight)"
-		);
+		await this.driver.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 
 	// scroll element into view and click
 	async scrollElementIntoViewAndClick(selector: By) {
 		await this.scrollElementIntoView(selector);
+		// timeout needed to allow any overlays to disappear
+		await this.driver.sleep(5000);
+		// click the element
 		await this.findElementAndClick(selector);
 	}
 }
