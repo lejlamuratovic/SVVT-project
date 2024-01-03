@@ -25,5 +25,10 @@
     },
     "hyperlinks": {
         "instagram": "https://www.instagram.com/oriflamebosnaihercegovina/"
+    },
+    "order": {
+        "city": "Sarajevo",
+        "address": "Sarajevoo123",
+        "postalCode": "71000"
     }
 }

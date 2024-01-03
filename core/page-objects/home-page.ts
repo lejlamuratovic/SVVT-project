@@ -13,6 +13,7 @@ export class HomePage extends BasePage {
 	private closeCookiesButton = By.xpath(
 		'//button[@id="onetrust-reject-all-handler"]'
 	);
+	private homepageButton = By.className("MuiTypography-root MuiTypography-body1 MuiLink-root MuiLink-underlineAlways top-area-1x2nwj7");
 
 	constructor(driver: WebDriver) {
 		super(driver);
@@ -40,5 +41,9 @@ export class HomePage extends BasePage {
 
 	async findSignInButton() {
 		await this.findElement(this.signInButton);
+	}
+
+	async clickHomepage() {
+		await this.findElementAndClick(this.homepageButton);
 	}
 }
