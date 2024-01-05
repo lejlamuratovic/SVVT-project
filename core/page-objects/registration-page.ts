@@ -41,7 +41,7 @@ export class RegistrationPage extends BasePage {
     }
 
     async clickRegister() {
-        await this.findElementAndClickEnsuringVisible(this.registerButton);
+        await this.findElementAndClick(this.registerButton);
     }
 
     // async selectVerificationInput() {

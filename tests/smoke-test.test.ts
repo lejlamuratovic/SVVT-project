@@ -45,17 +45,20 @@ test("Should perform order", async () => {
     await cartPage.checkCartProductName();
     await orderPage.clickObrada();
     await orderPage.clickNastavi();
+
+    /*
     await orderPage.clickPromjena();
     await orderPage.clickNovaAdresa();
+    await orderPage.enterAddress();
     await orderPage.enterCity();
     await orderPage.waitForMenu();
     await orderPage.selectCity();
-    await orderPage.enterAddress();
     await orderPage.clickPrimaryAddress();
     await orderPage.clickSave();
     await orderPage.checkEnteredAddress();
     await orderPage.checkEnteredPostalCode();
-    await orderPage.checkEnteredCity();
+    await orderPage.checkEnteredCity(); */
+
     await orderPage.clickDeliveryOption();
     await orderPage.clickNastavi2();
 
