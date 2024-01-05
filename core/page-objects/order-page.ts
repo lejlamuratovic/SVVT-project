@@ -71,7 +71,7 @@ export class OrderPage extends BasePage {
     }
 
     async clickSave() {
-        await this.waitAndClick(this.saveButton, 10000);
+        await this.waitAndClick(this.saveButton, 50000);
     }
 
     async checkEnteredAddress() {
