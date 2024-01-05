@@ -22,6 +22,7 @@ test("Should register user", async () => {
 	await homePage.closePopUp();
 	await homePage.selectEurope();
 	await homePage.selectArea();
+	await homePage.closeCookies();
 	await registrationPage.clickJoin();
 	await registrationPage.inputPhone();
 	await registrationPage.inputPassword();

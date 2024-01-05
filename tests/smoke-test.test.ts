@@ -53,11 +53,16 @@ test("Should perform order", async () => {
     await orderPage.enterAddress();
     await orderPage.clickPrimaryAddress();
     await orderPage.clickSave();
+    await orderPage.checkEnteredAddress();
     await orderPage.checkEnteredPostalCode();
     await orderPage.checkEnteredCity();
+    await orderPage.clickDeliveryOption();
     await orderPage.clickNastavi2();
-    // await orderPage.clickPaymentOption();
-    // await orderPage.clickNastavi2();
+
+    await orderPage.clickPaymentOption();
+    await orderPage.clickNastavi3();
+    await orderPage.checkBillingAddress();
+    await orderPage.clickTermsAndConditions();
 }, 100000);
 
 afterAll(async () => {

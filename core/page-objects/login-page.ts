@@ -28,7 +28,7 @@ export class LoginPage extends BasePage {
 	}
 
 	async enterNumber() {
-		await this.fillInputField(this.phoneInputField, testData.data.phoneNumber);
+		await this.fillInputField(this.phoneInputField, testData.data.loginEmail);
 	}
 
 	async enterPassword() {

@@ -108,4 +108,13 @@ export default class BasePage {
 		// click the element
 		await this.findElementAndClick(selector);
 	}
+
+	async getAddressText(selector: By) {
+		let addressElement = await this.findElement(selector);
+		let addressText = await addressElement.getText();
+
+		// to exclude phone number
+		addressText = addressText.split('\n').filter(line => !line.includes('+')).join('\n');
+		return addressText;
+	}
 }

@@ -4,7 +4,8 @@
         "test": "https://ba.oriflame.com/join-us/self-vip-registration?registrationId=c768f499-80bd-9080-e43d-246958f4d0e7"
     },
     "data": {
-        "phoneNumber": "lejlamuratovic6@gmail.com",
+        "loginEmail": "lejlamuratovic6@gmail.com",
+        "phoneNumber": 62455455,
         "password": "lejlaemir123",
         "verificationCode": 911232,
         "firstName": "Lejla",
@@ -28,7 +29,11 @@
     },
     "order": {
         "city": "Sarajevo",
-        "address": "Sarajevoo123",
-        "postalCode": "71000"
+        "address": "Neka adresa 1",
+        "postalCode": "71000",
+        "country": "BOSNIA",
+        "email": "lejlamuratovic6@gmail.com",
+        "fullName": "Lejla Muratović"
     }
+    
 }

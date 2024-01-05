@@ -26,9 +26,12 @@ export class OrderPage extends BasePage {
     private enteredPostalCode = By.xpath('//span[@data-testid="Checkout-checkout-delivery-delivery-box-zip-code"]');
     private enteredCity = By.xpath('//span[@data-testid="Checkout-checkout-delivery-delivery-box-city"]');
     private deliveryOption = By.xpath("//div[@data-testid='Checkout-checkout-delivery-courier-box'][.//figcaption[contains(text(), 'X Express')]]");
-    private nastaviButton2 = By.xpath("//span[contains(text(), 'Plaćanje')]");
-    private paymentOption = By.xpath("checkout-payment-1fhhsfl");
+    private nastaviButton2 = By.className("w-buttons summary-panel-buttons js-summary-panel-buttons centered-summary-buttons");
+    private paymentOption = By.xpath("//p[contains(text(), 'Plaćanje pouzećem')]");
     private nastaviButton3 = By.className("w-buttons summary-panel-buttons js-summary-panel-buttons centered-summary-buttons");
+    private deliveryDetails = By.className("billing-address");	
+    private termsAndConditions = By.xpath('//label[@for="terms-conditions"]');
+    private orderButton = By.id("place-order-button");
 
 
     async clickObrada() {
@@ -53,7 +56,6 @@ export class OrderPage extends BasePage {
 
     async enterAddress() {
         await this.fillInputField(this.addressInput, testData.order.address);
-        await this.driver.sleep(5000); // warning message?
     }
 
     async waitForMenu() {
@@ -65,14 +67,15 @@ export class OrderPage extends BasePage {
     }
 
     async clickPrimaryAddress() {
-        await this.findElementAndClickEnsuringVisible(this.primaryAddressCheckBox);
+        await this.findElementAndClick(this.primaryAddressCheckBox);
     }
 
     async clickSave() {
-        await this.findElementAndClickEnsuringVisible(this.saveButton);
+        await this.waitAndClick(this.saveButton, 10000);
     }
 
     async checkEnteredAddress() {
+        await this.driver.sleep(10000); // to allow for address to be saved before checking
         await this.checkMatchingElements(this.enteredAddress, testData.order.address);
     }
 
@@ -85,7 +88,7 @@ export class OrderPage extends BasePage {
     }
 
     async clickDeliveryOption() {
-        await this.findElementAndClickEnsuringVisible(this.deliveryOption);
+        await this.findElementAndClick(this.deliveryOption);
     }
 
     async clickNastavi2() {
@@ -98,6 +101,16 @@ export class OrderPage extends BasePage {
 
     async clickNastavi3() {
         await this.waitAndClick(this.nastaviButton3, 10000);
+    }
+
+    async checkBillingAddress() {
+        let addressText = await this.getAddressText(this.deliveryDetails);
+        let expectedText = `${testData.order.fullName}\n${testData.order.address}\n${testData.order.postalCode} ${testData.order.city.toUpperCase()}\n${testData.order.country}\n${testData.order.email}`;
+        expect(addressText).toBe(expectedText);
+    }    
+
+    async clickTermsAndConditions() {
+        await this.findElementAndClick(this.termsAndConditions);
     }
 }
 
