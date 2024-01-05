@@ -71,7 +71,7 @@ export class OrderPage extends BasePage {
     }
 
     async clickSave() {
-        await this.waitAndClick(this.saveButton, 50000);
+        await this.findElementAndClick(this.saveButton);
     }
 
     async checkEnteredAddress() {
@@ -113,4 +113,3 @@ export class OrderPage extends BasePage {
         await this.findElementAndClick(this.termsAndConditions);
     }
 }
-
