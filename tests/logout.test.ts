@@ -33,6 +33,8 @@ test("Should logout the user", async () => {
 	await loginPage.checkInformation();
 	await homePage.closeCookies();
 	await logoutPage.clickLogout();
+	// in case logout modal appears when cart not empty
+	await logoutPage.handleLogoutModal();
 	await homePage.findSignInButton();
 }, 50000);
 
