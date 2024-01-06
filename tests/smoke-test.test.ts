@@ -66,6 +66,8 @@ test("Should perform order", async () => {
     await orderPage.clickNastavi3();
     await orderPage.checkBillingAddress();
     await orderPage.clickTermsAndConditions();
+    await orderPage.clickOrder();
+    await orderPage.checkConfirmationHeader();
 }, 100000);
 
 afterAll(async () => {

@@ -32,6 +32,7 @@ export class OrderPage extends BasePage {
     private deliveryDetails = By.className("billing-address");	
     private termsAndConditions = By.xpath('//label[@for="terms-conditions"]');
     private orderButton = By.id("place-order-button");
+    private confirmationHeader = By.className("order-status-notification__title");
 
 
     async clickObrada() {
@@ -111,5 +112,13 @@ export class OrderPage extends BasePage {
 
     async clickTermsAndConditions() {
         await this.findElementAndClick(this.termsAndConditions);
+    }
+
+    async clickOrder() {
+        await this.findElementAndClick(this.orderButton);
+    }
+
+    async checkConfirmationHeader() {
+        await this.checkMatchingElements(this.confirmationHeader, testData.order.message);
     }
 }
